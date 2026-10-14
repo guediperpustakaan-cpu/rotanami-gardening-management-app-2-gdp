@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-nunito), "Nunito Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-fraunces), Fraunces, ui-serif, Georgia, serif;
+  --color-ink: #241c14;
+  --color-soil: #4a3728;
+  --color-clay: #c45c32;
+  --color-leaf: #2f5d3a;
+  --color-leaf-deep: #1f3f28;
+  --color-moss: #7e9b4e;
+  --color-sun: #e2b14a;
+  --color-cream: #f4efe4;
+  --color-paper: #fbf7f0;
+  --color-mist: #e4dac8;
+  --color-muted: #6b5e4e;
+  --shadow-card: 0 18px 40px rgba(36, 28, 20, 0.08);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(1200px 500px at 10% -10%, rgba(226, 177, 74, 0.16), transparent 55%),
+    radial-gradient(900px 420px at 110% 0%, rgba(126, 155, 78, 0.16), transparent 50%),
+    var(--color-cream);
+  color: var(--color-ink);
+}
+
+::selection {
+  background: #cfe0c4;
+  color: var(--color-leaf-deep);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-leaf);
+  outline-offset: 3px;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.paper-card {
+  background: var(--color-paper);
+  border: 1px solid rgba(74, 55, 40, 0.08);
+  box-shadow: var(--shadow-card);
+}
+
+.soil-grain {
+  background-image:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.35), transparent 40%),
+    radial-gradient(circle at 20% 20%, rgba(74, 55, 40, 0.08) 0.6px, transparent 0.8px);
+  background-size: auto, 12px 12px;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0.7;
+}

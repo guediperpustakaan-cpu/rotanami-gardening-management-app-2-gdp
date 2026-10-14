@@ -4,6 +4,8 @@ Rotanami adalah aplikasi web berbahasa Indonesia untuk pekebun rumahan, kebun ko
 
 Nama **Rotanami** adalah nama kerja untuk proyek ini. Nama ini tidak diklaim unik secara global, bebas merek dagang, atau tersedia sebagai domain.
 
+> **Open Source oleh MZF - 2026** — gratis, bebas iklan. Dukung lewat [Trakteer](https://trakteer.id/perpus_opera/).
+
 ## Catatan lingkungan
 
 Lingkungan kerja ini memakai **Next.js (App Router) + API Route + Drizzle ORM + PostgreSQL**. Itu setara secara fungsional dengan frontend React + backend Node.js, tetapi tidak memakai Vite dan Express terpisah agar aplikasi dapat dijalankan di sandbox ini.
@@ -25,13 +27,14 @@ Autentikasi sungguhan memakai hash kata sandi (scrypt) dan cookie sesi **HttpOnl
 - Catatan tes tanah (nilai opsional) plus tren sederhana bila ada dua hasil atau lebih
 - Observasi hama, penyakit, pertumbuhan, cuaca, atau catatan lain
 - Ekspor CSV riwayat tanam dan tes tanah
+- Widget Trakteer melayang di sudut kanan bawah: pilihan nominal (mulai Rp6.000) dan QR code tanpa pindah halaman
 
 ## Keterbatasan
 
 - Pengingat hanya tampil di dalam aplikasi. Tidak ada email atau push notification.
 - Saran rotasi adalah panduan umum, bukan diagnosis atau kepastian agronomi.
 - Tidak ada ekspor PDF (sengaja, agar tidak menampilkan tombol yang tidak berfungsi).
-- Tidak ada fitur berbayar atau iklan.
+- Tidak ada fitur berbayar atau iklan. Ada widget Trakteer sukarela untuk mendukung server (lihat bagian "Dukung proyek ini").
 
 ## Prasyarat
 
@@ -139,3 +142,42 @@ Semua endpoint (kecuali masuk/daftar dan `/api/health`) memerlukan sesi. Respons
 - Satuan luas awal: `m²`
 - Penghapusan kebun/petak memakai `ON DELETE RESTRICT` di database, lalu dihapus berurutan di aplikasi setelah konfirmasi
 - Katalog contoh bersifat baca-saja; pengguna menambah tanaman sendiri untuk kebunnya
+
+## Dukung proyek ini
+
+Aplikasi ini gratis dan bebas iklan. Ada widget Trakteer melayang di sudut kanan bawah setiap halaman dengan tulisan **"Web app ini gratis & bebas iklan. Kopi kecil, server tetap jalan"**.
+
+Ketika diklik, sebuah dialog terbuka di dalam aplikasi (tidak pindah halaman) berisi:
+
+- Pilihan nominal traktiran mulai dari **Rp6.000** dan kelipatannya (Rp12.000, Rp18.000, dst.)
+- **QR code** menuju halaman Trakteer — cukup di-scan dengan kamera ponsel
+- Tombol "Buka Trakteer" dan "Salin link" untuk membuka halaman pembayaran
+
+Nominal yang dipilih hanya pilihan cepat; jumlah akhir tetap bisa disesuaikan di halaman Trakteer. Pemrosesan pembayaran dilakukan oleh Trakteer, aplikasi ini tidak menyimpan data pembayaran apa pun.
+
+Halaman Trakteer: <https://trakteer.id/perpus_opera/>
+
+Kode widget ada di `src/components/trakteer-widget.tsx` dan QR code dibuat di sisi klien dengan `qrcode.react`.
+
+## Source code
+
+Repositori: <https://github.com/guediperpustakaan-cpu/rotanami-gardening-management-app-2-gdp>
+
+Download source code lengkap (ZIP):
+
+```
+https://github.com/guediperpustakaan-cpu/rotanami-gardening-management-app-2-gdp/archive/refs/heads/main.zip
+```
+
+Atu clone:
+
+```bash
+git clone https://github.com/guediperpustakaan-cpu/rotanami-gardening-management-app-2-gdp.git
+```
+
+## Lisensi
+
+**Open Source oleh MZF - 2026**
+
+Kode proyek ini bersifat open source dan bebas digunakan, dipelajari, dan dimodifikasi.
+

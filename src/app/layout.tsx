@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { Fraunces, Nunito_Sans } from "next/font/google";
 import { ToastProvider } from "@/components/toast";
+import { TrakteerWidget } from "@/components/trakteer-widget";
 import "./globals.css";
 
 const nunito = Nunito_Sans({
@@ -27,7 +28,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="id">
       <body className={`${nunito.variable} ${fraunces.variable} font-sans antialiased`}>
-        <ToastProvider>{children}</ToastProvider>
+        <ToastProvider>
+          {children}
+          <TrakteerWidget />
+        </ToastProvider>
       </body>
     </html>
   );

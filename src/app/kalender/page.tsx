@@ -58,7 +58,14 @@ export default function CalendarPage() {
   }
 
   useEffect(() => {
-    load().catch((error) => toast(error.message, "error"));
+    const run = async () => {
+      try {
+        await load();
+      } catch (error) {
+        toast(error instanceof Error ? error.message : "Gagal memuat data", "error");
+      }
+    };
+    void run();
   }, [toast]);
 
   const items: CalItem[] = useMemo(() => {

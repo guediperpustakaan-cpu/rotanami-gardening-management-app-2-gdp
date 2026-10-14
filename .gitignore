@@ -1,0 +1,18 @@
+node_modules
+
+# Next.js
+.next/
+out/
+build/
+next-env.d.ts
+
+# TypeScript
+*.tsbuildinfo
+
+# Environment (jangan commit kredensial)
+.env
+.env.*
+!.env.example
+
+# Kilo
+.kilo/

@@ -60,12 +60,27 @@ Jangan menaruh kredensial di frontend.
 
 ```bash
 npm install
-npx drizzle-kit push
-npx tsx src/db/seed.ts
+npm run db:push
+npm run db:seed
 npm run dev
 ```
 
-Buka [http://localhost:3000](http://localhost:3000).
+Buka [http://localhost:3000](http://localhost:3000). `npm run db:push` menjalankan `drizzle-kit push` dan `npm run db:seed` menjalankan `tsx src/db/seed.ts`; keduanya membaca `DATABASE_URL` dari `.env`.
+
+## Deploy ke Vercel + Neon
+
+1. Buat project di Vercel dan import repositori ini.
+2. Di **Settings → Environment Variables**, tambahkan:
+   - `DATABASE_URL` — connection string Neon (mis. `postgresql://...?sslmode=require`)
+   - `DATABASE_SSL` — `true`
+3. Deploy. Semua API route memakai `force-dynamic`, jadi build tidak membutuhkan koneksi database.
+4. Pastikan skema dan data contoh sudah ada di database Neon sebelum deploy pertama:
+
+```bash
+DATABASE_URL=<connection-string-neon> DATABASE_SSL=true npm run db:push
+DATABASE_URL=<connection-string-neon> DATABASE_SSL=true npm run db:seed
+```
+
 
 Perintah lain:
 

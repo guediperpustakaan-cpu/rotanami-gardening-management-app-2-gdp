@@ -49,13 +49,18 @@ function PetakInner() {
   }
 
   useEffect(() => {
-    load().catch((error) => toast(error.message, "error"));
+    const run = async () => {
+      try {
+        await load();
+      } catch (error) {
+        toast(error instanceof Error ? error.message : "Gagal memuat data", "error");
+      }
+    };
+    void run();
   }, [toast]);
 
-  useEffect(() => {
-    if (params.get("aksi") === "tambah") setPlotOpen(true);
-    if (params.get("aksi") === "tanam") setPlantOpen(true);
-  }, [params]);
+  const plotModalOpen = plotOpen || params.get("aksi") === "tambah";
+  const plantModalOpen = plantOpen || params.get("aksi") === "tanam";
 
   const cropOptions = useMemo(() => crops, [crops]);
 
@@ -142,7 +147,7 @@ function PetakInner() {
       )}
 
       <Modal
-        open={plotOpen}
+        open={plotModalOpen}
         title="Tambah petak"
         onClose={() => {
           setPlotOpen(false);
@@ -179,7 +184,7 @@ function PetakInner() {
       </Modal>
 
       <Modal
-        open={plantOpen}
+        open={plantModalOpen}
         title="Catat tanaman"
         onClose={() => {
           setPlantOpen(false);
